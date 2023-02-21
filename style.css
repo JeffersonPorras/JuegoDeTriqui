@@ -1,0 +1,124 @@
+:root{
+    --primary-color : #1d1d1d;
+    --secundary-color : #565656;
+    --text-color: #ffffff;
+
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    background-color: var(--primary-color);
+    display: grid;
+}
+header {
+    width: 100%;
+    height: 80px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-size: 4.2rem;
+    letter-spacing: 2rem;
+    text-align: center;
+    color: #5A5A5A;
+}
+main{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.input_tabla{
+    width: 200px;
+    height: 50px;
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center;
+}
+.opciones-a-elegir{
+    width: 150px;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+}
+p {
+    width: 100%;
+    text-align: center;
+    font-size: 4rem;
+    color: var(--text-color);
+}
+.opciones-a-elegir input{
+    width: 50px;
+    height: 50px;
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    font-size: 2.6rem;
+    text-align: center;
+    justify-content: center;
+}
+table {
+    width: 200px;
+    height: 200px;
+    background-color: var(--secundary-color);
+    border: 3px solid var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+td{
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--text-color);
+}
+.button_reiniciar{
+    display: flex;
+    justify-content: space-around;
+}
+
+button{
+    width: 100px;
+    height: 40px;
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    font-size: 2rem;
+}
+footer{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 0;
+}
+a{
+    font-size: 2.6rem;
+    color: var(--secundary-color);
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+span {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+span img {
+    width: 25px;
+}
