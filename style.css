@@ -2,7 +2,6 @@
     --primary-color : #1d1d1d;
     --secundary-color : #565656;
     --text-color: #ffffff;
-
 }
 *{
     box-sizing: border-box;
@@ -13,6 +12,9 @@ html{
     font-size: 62.5%;
 }
 body{
+    width: 320px;
+    min-width: 300px;
+    max-width: 560px;
     background-color: var(--primary-color);
     display: grid;
 }
