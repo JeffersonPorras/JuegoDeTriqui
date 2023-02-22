@@ -12,12 +12,12 @@
         <h1>TRIQUI</h1>
     </header>
     <main>
-        <input class="input_tabla" type="button" value="crear Tabla de juego" onclick=" genera_tabla()">
         <p>Elije</p>
         <div class="opciones-a-elegir">
-            <input type="button" value="X" >
-            <input type="button" value="O">
+            <input type="button" value="X" onclick="eleccionJudador(event,'x')">
+            <input type="button" value="O" onclick="eleccionJudador(event,'o')">
         </div>
+        <input class="input_tabla" type="button" value="iniciar Juego" onclick=" genera_tabla()">
     </main>
     <div class="button_reiniciar">
         <button type="reset">reiniciar</button>

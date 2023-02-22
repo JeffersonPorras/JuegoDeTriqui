@@ -1,8 +1,9 @@
-let eleccionDelJugador = "o"
+
+var eleccionDelJugador = ''
 
 /**Esta Funcion me recibe la elecion del jugador con los dos caracteres permitos que son "x" o "o" si el jugador
  *ingresa algun otro caracter mostrara "Debes elegir entre X o O" */
-function eleccionJudador (eleccion){
+function eleccionJudador (event,eleccion){
     let resultadoEleccion = ''
     if(eleccion.toLowerCase() === "x" ){
         resultadoEleccion = "X"
@@ -11,9 +12,10 @@ function eleccionJudador (eleccion){
     }else{
         resultadoEleccion = "Debes elegir entre X o O"
     }
-    return resultadoEleccion
+    eleccionDelJugador = resultadoEleccion
+    console.log(event);
+    event.target.disabled = eleccionDelJugador
 }
-console.log(eleccionJudador(eleccionDelJugador));
 
 /**Esta Funcion me recibe el valor obtenido de la Funcion eleccionJugador y me retorna el la segunda opcion
  * es decir si el jugador elije "X" al pc le corresponde "O" pero si el jugador elige un caracter no permitido
@@ -30,24 +32,33 @@ function eleccionPc (eleccion){
     }
     return resultadoEleccionPc
 }
-console.log(eleccionPc(eleccionDelJugador));
 
 function genera_tabla() {
     let main = document.getElementsByTagName("main")[0];
     let tabla = document.createElement("table");
     let tblMain = document.createElement("tmain");
 
-    for (let i = 0; i < 3; i++) {
-
+    for (let i = 0; i < 3; i++){
       let hilera = document.createElement("tr");
       for (let j = 0; j < 3; j++) {
         let celda = document.createElement("td");
-        /* let textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j); */
-        //celda.appendChild(textoCelda);
+        celda.classList.add("columnaJuego")
         hilera.appendChild(celda);
       }
       tblMain.appendChild(hilera);
     }
     tabla.appendChild(tblMain);
     main.appendChild(tabla);
+    anadirInteractividad()
   }
+function anadirInteractividad() {
+    let espaciosDeJuego = document.querySelectorAll(".columnaJuego")
+    console.log(espaciosDeJuego);
+    espaciosDeJuego.forEach(espacio => {
+        espacio.addEventListener('click',siElijioEspacio)
+    });
+}
+function siElijioEspacio(event) {
+    event.target.innerText = eleccionDelJugador
+    console.log(eleccionDelJugador);
+}

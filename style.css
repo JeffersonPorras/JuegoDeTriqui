@@ -12,11 +12,10 @@ html{
     font-size: 62.5%;
 }
 body{
-    width: 320px;
     min-width: 300px;
     max-width: 560px;
     background-color: var(--primary-color);
-    display: grid;
+    display: inline;
 }
 header {
     width: 100%;
@@ -72,6 +71,9 @@ p {
     text-align: center;
     justify-content: center;
 }
+input[type="button"]:disabled {
+    background-color: red;
+}
 table {
     width: 200px;
     height: 200px;
@@ -88,7 +90,7 @@ td{
 }
 .button_reiniciar{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 button{
@@ -103,7 +105,7 @@ footer{
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-bottom: 0;
 }
 a{
