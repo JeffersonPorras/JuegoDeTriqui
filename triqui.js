@@ -3,8 +3,7 @@ var eleccionDelJugador = ''
 var eleccionDelPc = ''
 let celdasJugadasDelJugador = []
 let celdasJugadasDelPc = []
-let celdasJugasdas = []
-celdasJugadasDelJugador.push(celdasJugasdas)
+
 const opcionesHorizontalesParaGanar = [
     [0,1,2],
     [3,4,5],
@@ -32,7 +31,7 @@ function eleccionJudador (event,eleccion){
         resultadoEleccion = "Debes elegir entre X o O"
     }
     eleccionDelJugador = resultadoEleccion
-    event.target.disabled = eleccionDelJugador
+    event.target.disabled = eleccionDelJugador?true:false
     eleccionPc(eleccionDelJugador)
 }
 /**Esta Funcion me recibe el valor obtenido de la Funcion eleccionJugador y me retorna el la segunda opcion
@@ -40,16 +39,18 @@ function eleccionJudador (event,eleccion){
  * esta funcion me retorna "El jugador no ha elejido"
  */
 function eleccionPc (eleccion){
-    let inputO =document.querySelector('input_o')
-    let inputX =document.querySelector('input_x')
+    let inputABloquiar
     let resultadoEleccionPc = ''
     if(eleccion.toLowerCase() === "x"){
         resultadoEleccionPc = "O"
+        inputABloquiar = document.querySelector('#input_o')
     }else if(eleccion.toLowerCase() === "o"){
         resultadoEleccionPc = "X"
+        inputABloquiar = document.querySelector('#input_x')
     }else{
         resultadoEleccionPc = "El jugador no ha elejido"
     }
+    inputABloquiar.disabled = true
     eleccionDelPc = resultadoEleccionPc
     console.log(eleccionDelPc);
 }
@@ -78,21 +79,43 @@ function genera_tabla() {
 function anadirInteractividad() {
     let espaciosDeJuego = document.querySelectorAll(".columnaJuego")
     espaciosDeJuego.forEach(espacio => {
-        espacio.addEventListener('click',siElijioEspacio)
+        espacio.addEventListener('click',seleccionarCasilla)
     });
     event.target.disabled = espaciosDeJuego
 }
-function siElijioEspacio(event) {
+
+
+function seleccionarCasilla(event) {
     event.target.innerText = eleccionDelJugador
     console.log(event.target);
     celdasJugadasDelJugador.push(event.target.id)
-    console.log(eleccionDelJugador);
-    //ElijeElPc(event)
+    console.log(celdasJugadasDelJugador);
+    seleccionarCasillaPc()
 }
-function elijeElPc() {
-    eleccionDelPc = aleatorio(1,8);
+function seleccionarCasillaPc() {
+    let jugadaPc
+    do {
+        jugadaPc = aleatorio(0,8);
+        if (hayGanador()) {
+            return
+        }
+        console.log(jugadaPc);
+    } while (existeJugadaDentroDelJugador(jugadaPc)||existeJugadaDentroDelPc(jugadaPc))
+    celdasJugadasDelPc.push(jugadaPc)
+    let casilla = document.getElementById(jugadaPc)
+    casilla.innerText = eleccionDelPc
+
+    console.log(jugadaPc);
 }
-console.log(elijeElPc());
+function existeJugadaDentroDelJugador(jugada) {
+    let eleccion = celdasJugadasDelJugador.find((o) => o == jugada)
+    return eleccion?true:false
+}
+function existeJugadaDentroDelPc(jugada) {
+    let eleccionAlmacenadaPc = celdasJugadasDelPc.find((o) => o == jugada)
+    return eleccionAlmacenadaPc?true:false
+}
+
 function imprimirCoordenadas(matrix){
     for(let i = 0; i < matrix.length; i++) {
         for(let j = 0; j < matrix[i].length; j++){
@@ -100,22 +123,15 @@ function imprimirCoordenadas(matrix){
         }
     }
 }
-console.log(celdasJugadasDelJugador);
 
-function ganadorDelJuego(matrix) {
-    let ganadorDelJuego = ''
-    let opcion1 = opcionesHorizontalesParaGanar.find((o) => o === matrix[i][j])
-    let opcion2 = opcionesVerticalesParaGanar.find((o) => o === matrix[i][j])
-    let opcion3 = opcionesDiagonalesParaGanar.find((o) => o === matrix[i][j])//verificar el array coincida jugadas del jugador
-    let jugador1 = celdasJugadasDelJugador
-    if(opcion1 === jugador1 || opcion2 === jugador1 || opcion3 === jugador1){
-        ganadorDelJuego = "Jugador Gana"
-    }else {
-        ganadorDelJuego = "Pc Gana"
+function hayGanador() {
+    if (celdasJugadasDelJugador.length > 3 || celdasJugadasDelPc.length > 3) {
+        console.log(celdasJugadasDelJugador);
+        return true
     }
-    return ganadorDelJuego
+    return false
 }
-console.log(ganadorDelJuego(celdasJugadasDelJugador));
+
 function aleatorio(min,max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
