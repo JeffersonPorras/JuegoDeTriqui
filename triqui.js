@@ -74,7 +74,6 @@ function genera_tabla() {
     tabla.appendChild(tblMain);
     main.appendChild(tabla);
     anadirInteractividad()
-    //imprimirCoordenadas(opcionesHorizontalesParaGanar)
   }
 function anadirInteractividad() {
     let espaciosDeJuego = document.querySelectorAll(".columnaJuego")
@@ -116,42 +115,38 @@ function existeJugadaDentroDelPc(jugada) {
     return eleccionAlmacenadaPc?true:false
 }
 
-function imprimirCoordenadas(matrix){
-    for(let i = 0; i < matrix.length; i++) {
-        for(let j = 0; j < matrix[i].length; j++){
-            console.log(matrix[i][j]);
-        }
-    }
-}
-
 function hayGanador() {
-    if (celdasJugadasDelJugador.length > 3 || celdasJugadasDelPc.length > 3) {
+
+    if (identificarGanador(opcionesDiagonalesParaGanar,celdasJugadasDelJugador)) {
         console.log(celdasJugadasDelJugador);
-        return true
+        console.log("gano Jugador");
     }
-    return false
 }
 function identificarGanador(matriz,array) {
     let contadorGanador = 0
     for (let i = 0; i < matriz.length; i++) {
-        console.log(matriz[i]);
-        for (let j = 0; j < matriz[i].length; j++) {
-         let valor = matriz[i][j]
-         let valorArray = array.find((o) => o === valor)
-         if(valorArray){
-             contadorGanador ++
-         }
-     }
-     if (contadorGanador == 3) {
-         console.log("este array es el ganador")
-         console.log(array);
-     }
-     contadorGanador = 0
+       for (let j = 0; j < matriz[i].length; j++) {
+        let valor = matriz[i][j]
+        let valorArray = array.find((o) => o === valor)
+        if(valorArray){
+            contadorGanador ++
+        }
+    }
+    if (contadorGanador == 3) {
+        console.log("este array es el ganador")
+        console.log(array);
+    }
+    contadorGanador = 0
  }
 }
-function identificarSiJugadorGano(celdasJugadasDelJugador,callback) {
-    return identificarGanador(opcionesDiagonalesParaGanar,celdasJugadasDelJugador)
-}
+
+
+
+
+
+
+
+
 
 function aleatorio(min,max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
