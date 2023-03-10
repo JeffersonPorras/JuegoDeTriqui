@@ -1,6 +1,7 @@
 :root{
     --primary-color : #1d1d1d;
     --secundary-color : #565656;
+    --button-selecionado: #333232;
     --text-color: #ffffff;
 }
 *{
@@ -26,7 +27,7 @@ header {
     align-items: center;
 }
 h1 {
-    font-size: 4.2rem;
+    font-size: 4.6rem;
     letter-spacing: 2rem;
     text-align: center;
     color: #5A5A5A;
@@ -73,7 +74,7 @@ p {
     cursor: pointer;
 }
 input[type="button"]:disabled {
-    background-color: var(--primary-color);
+    background-color: var(--button-selecionado);
 }
 table {
     width: 200px;
