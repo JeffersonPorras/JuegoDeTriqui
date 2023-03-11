@@ -14,17 +14,17 @@
     <main>
         <p>Elije</p>
         <div class="opciones-a-elegir">
-            <input type="button" value="X" onclick="eleccionJudador(event,'x')">
-            <input type="button" value="O" onclick="eleccionJudador(event,'o')">
+            <input type="button" value="X" onclick="eleccionJudador(event,'x')" id="input_x">
+            <input type="button" value="O" onclick="eleccionJudador(event,'o')" id="input_o">
         </div>
         <input class="input_tabla" type="button" value="iniciar Juego" onclick=" genera_tabla()">
     </main>
+    <div id="resultado" ></div>
     <div class="button_reiniciar">
-        <button type="reset">reiniciar</button>
+        <button type="reset" onclick="reiniciarJuego()">Reiniciar</button>
     </div>
     <footer>
-        <a href=""><span><img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png"/></span>Facebook</a>
-        <a href=""><span><img src="https://img.icons8.com/ios-filled/50/000000/linkedin-circled--v1.png"/></span>Linkedin</a>
+        <a href="https://github.com/JeffersonPorras/JuegoDeTriqui"><span><img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin-circled--v1.png"/></span>Linkedin</a>
     </footer>
     <script src="./triqui.js"></script>
 </body>
