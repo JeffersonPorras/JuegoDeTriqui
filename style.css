@@ -1,7 +1,7 @@
 :root{
     --primary-color : #1d1d1d;
     --secundary-color : #565656;
-    --button-selecionado: #333232;
+    --button-selecionado: #fc0000;
     --text-color: #ffffff;
 }
 *{
@@ -30,7 +30,7 @@ h1 {
     font-size: 4.6rem;
     letter-spacing: 2rem;
     text-align: center;
-    color: #5A5A5A;
+    color: var(--text-color);
 }
 main{
     width: 100%;
@@ -81,18 +81,23 @@ table {
     height: 200px;
     background-color: var(--secundary-color);
     border: 3px solid var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-content: center;
 }
-td{
+.columnaJuego{
     width: 60px;
     height: 60px;
-    border: 1px solid var(--text-color);
+    border: 2px solid var(--text-color);
     color: var(--text-color);
     font-size: 2.4rem;
     text-align: center;
 
+}
+#resultado{
+    text-align: center;
+    font-size: 4rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
 }
 .button_reiniciar{
     display: flex;
@@ -116,7 +121,7 @@ footer{
 }
 a{
     font-size: 2.6rem;
-    color: var(--secundary-color);
+    color: var(--text-color);
     text-decoration: none;
     cursor: pointer;
     display: flex;
@@ -130,5 +135,5 @@ span {
     flex-direction: row;
 }
 span img {
-    width: 25px;
+    width: 40px;
 }

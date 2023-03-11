@@ -94,7 +94,6 @@ function seleccionarCasillaPc() {
   let jugadaPc;
   do {
     jugadaPc = aleatorio(0, 8);
-    console.log(jugadaPc);
   } while (
     (existeJugadaDentroDelJugador(jugadaPc) ||
     existeJugadaDentroDelPc(jugadaPc))&&cantidadDeJugadas<=8
@@ -121,13 +120,13 @@ function hayGanador() {
     identificarGanador(opcionesVerticalesParaGanar,celdasJugadasDelJugador)||
     identificarGanador(opcionesDiagonalesParaGanar,celdasJugadasDelJugador)
   ) {
-     alert("Gano Jugador");
+     crearMensaje("Gano Jugador")
   }else if(identificarGanador(opcionesHorizontalesParaGanar,celdasJugadasDelPc)||
   identificarGanador(opcionesVerticalesParaGanar,celdasJugadasDelPc)||
   identificarGanador(opcionesDiagonalesParaGanar,celdasJugadasDelPc)) {
-    alert("Gano Pc");
-  }else if(cantidadDeJugadas == 9){
-    alert("Empate")
+    crearMensaje("Gano PC")
+  }else if(cantidadDeJugadas == 8){
+    crearMensaje("Empate")
   }
 }
 function identificarGanador(matriz, array) {
@@ -151,6 +150,13 @@ function identificarGanador(matriz, array) {
   return hayGanador;
 }
 
+function crearMensaje(resultado){
+  const sectionMensajes = document.getElementById('resultado')
+  sectionMensajes.innerHTML = resultado
+}
+function reiniciarJuego() {
+  location.reload()
+}
 
 function aleatorio(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
